@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-12 py-3" *ngFor="let sensor of Sensors">
+      <div class="card text-white" [class.bg-success]="sensor.status" [class.bg-danger]="!sensor.status" #card>
+        <div class="card-body">
+          <div class="card-title" >{{sensor.id}}</div>
+          <div class="card-text">{{sensor.name}}</div>
+          <button class="btn btn-primary" (click)="delete(card)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <form action="">
+        <label>ID: <input type="number" placeholder="ID" #id></label>
+        <label>NAME: <input type="text" placeholder="NAME" #name></label><br>
+        <label>ВКЛЮЧИТЬ? <input type="checkbox" [(ngModel)]="newStatus" name="status"></label><br>
+        <input type="submit" (click)="newSensor(id, name)" value="Добавить">
+      </form>
+    </div>
+  </div>
+</div>
