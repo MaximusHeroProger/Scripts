@@ -10,7 +10,10 @@ export class AppComponent {
   public id : number;
   public name : string;
   public status : boolean;
-  public newStatus :boolean;
+
+  public newId : number;
+  public newName : string;
+  public newStatus : boolean;
   constructor(){
     for (let i = 0; i < 10; i++){
       this.id = i;
@@ -19,11 +22,14 @@ export class AppComponent {
       this.Sensors[i] = new Sensor(this.id, this.name, this.status);
     }
   }
-  delete(elm: HTMLDivElement){
+  delete(elm: HTMLDivElement, id: number){
+    console.log(this.Sensors);
+    this.Sensors = this.Sensors.filter(obj => obj !== this.Sensors[id]);
     elm.remove();
+    console.log(this.Sensors);
   }
-  newSensor(id: HTMLInputElement, name: HTMLInputElement){
-    let sensor = new Sensor(parseInt(id.value) , name.value, this.newStatus);
+  newSensor(){
+    let sensor = new Sensor(this.newId, this.newName, this.newStatus);
     this.Sensors.push(sensor);
   }
 }
