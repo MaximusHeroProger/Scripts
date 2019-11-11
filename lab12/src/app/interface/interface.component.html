@@ -1,15 +1,15 @@
 <div class="row">
 	<div class="col-xs-12">
 		<div class="alert alert-info">
-			<h1>Добавьте сотрудника или руководителяотдела</h1>
+			<h1>Добавьте сотрудника или руководителя отдела</h1>
 		</div>
 		<label>Имя</label><input type="text" class="form-control" #workerNameInput>
 		<label>Отдел</label><input type="text" class="form-control" #workerRoleInput>
 		<br>
-		<button class="btn btn-primary btn-lg" (click)="onAddWorker(workerNameInput)">
+		<button class="btn btn-primary btn-lg mr-2" (click)="onAddWorker(workerNameInput)">
 			Добавить сотрудника
 		</button>
-		<button class="btn btn-primary btn-lg" (click)="onAddHeadWorker(workerNameInput)">
+		<button class="btn btn-primary btn-lg " (click)="onAddHeadWorker(workerNameInput)">
 			Добавить руководителя
 		</button>
 	</div>

@@ -10,6 +10,7 @@ export class WorkerElementComponent {
 	@Output() workerEdited = new EventEmitter<{name: string, role: string, oldName: string}>();
 	@Output() workerDeleted = new EventEmitter<string>();
 	public toggleEdit = true;
+	
 	constructor() {};
 
 	workerDelete(workerName: string){

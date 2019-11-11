@@ -25,7 +25,7 @@ export class AppComponent {
 	}
 	onWorkerDelete(workerName: string){
 		for (let worker of this.workerElements){
-			let index = parseInt(this.workerElements.findIndex(worker => worker.name == workerName));
+			let index = this.workerElements.findIndex(worker => worker.name == workerName);
 			if (index >= 0) {
 				this.workerElements.splice(index, 1);
 				break;
@@ -35,7 +35,7 @@ export class AppComponent {
 	}
 	onWorkerEdited(workerData: {name: string, role: string, oldName: string}){
 		for (let worker of this.workerElements){
-			this.index = parseInt(this.workerElements.findIndex(worker => worker.name == workerData.oldName));
+			this.index = this.workerElements.findIndex(worker => worker.name == workerData.oldName);
 			if (this.index >= 0) {
 				this.workerElements[this.index].name = workerData.name;
 				this.workerElements[this.index].role = workerData.role;

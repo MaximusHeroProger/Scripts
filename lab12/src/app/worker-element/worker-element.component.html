@@ -13,8 +13,8 @@
 			<label>Имя: <input type="text" class="form-control" [(ngModel)]="newName"></label><br>
 			<label>Отдел: <input type="text" class="form-control" [(ngModel)]="newRole"></label>
 		</p>
-		<button (click)="toggleEdit = fasle" *ngIf="toggleEdit">Редактировать</button>
-		<button (click)="workerDelete(worker.name)" *ngIf="toggleEdit">Удалить</button>
-		<button (click)="editedWorker(newName, newRole, worker.name)" *ngIf="!toggleEdit">Готово</button>
+		<button class="btn btn-primary mr-2" (click)="toggleEdit = fasle" *ngIf="toggleEdit">Редактировать</button>
+		<button class="btn btn-primary" (click)="workerDelete(worker.name)" *ngIf="toggleEdit">Удалить</button>
+		<button class="btn btn-primary" (click)="editedWorker(newName, newRole, worker.name)" *ngIf="!toggleEdit">Готово</button>
 	</div>
 </div>
