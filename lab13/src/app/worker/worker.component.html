@@ -1,0 +1,53 @@
+<div class="row mt-2">
+  <div class="col-12">
+    <div class="card" *ngIf="!edit; else elseBlock2">
+      <div class="card-body">
+        <h5 class="card-title">ФИО: {{worker.name}} {{worker.surname}}</h5>
+        <p class="card-text" *ngIf="worker.head; else elseBlock">Должность: Руководитель</p>
+        <ng-template #elseBlock>
+          <p class="card-text">Должность: Сотрудник</p>
+        </ng-template>
+        <p class="card-text">Телефон: {{worker.number}}</p>
+        <button class="btn btn-primary mr-2" (click)="edit = !edit">Редактировать</button>
+        <button class="btn btn-danger" (click)="deleteWorker(worker)">Удалить</button>
+      </div>
+    </div>
+
+    <ng-template #elseBlock2>
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="workerForm" (ngSubmit)="editWorker(worker)">
+            <div class="row mt-2">
+              <div class="col-12">
+                <input type="text"  id="name" class="form-control" placeholder="Имя" formControlName="name" value="{{worker.name}}">
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12">
+                <input type="text" id="surname" class="form-control" placeholder="Фамилия" formControlName="surname" value="{{worker.surname}}">
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12">
+                <input type="text" id="number" class="form-control" [textMask]="{mask: mask}" placeholder="Телефон" formControlName="number" value="{{worker.number}}">
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12">
+                <div class="form-check">
+                  <label class="form-check-label"><input class="form-check-input" type="checkbox" value="" formControlName="head" [checked]="worker.head">
+                  Руководитель</label>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12">
+                <input type="submit" class="btn btn-primary form-control" value="Изменить" [disabled]="!workerForm.valid">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
