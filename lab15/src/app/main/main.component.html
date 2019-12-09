@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row mt-2" *ngFor="let worker of workers">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">ФИО: {{worker.name}} {{worker.surname}}</h5>
+          <p class="card-text" *ngIf="worker.status; else elseBlock">Должность: Руководитель</p>
+          <ng-template #elseBlock>
+            <p class="card-text">Должность: Сотрудник</p>
+          </ng-template>
+          <p class="card-text">Телефон: {{worker.number}}</p>
+          <button class="btn btn-primary mr-2" [routerLink]="['/edit', worker.id]">Редактировать</button>
+          <button class="btn btn-danger" (click)="deleteWorker(worker)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
