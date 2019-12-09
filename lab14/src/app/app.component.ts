@@ -38,17 +38,29 @@ export class AppComponent implements OnInit {
     }
   }
   async onWorkerFormSubmit() {
-    const worker = this.workerForm.value;
-    await this.workersService.postWorker(worker);
-    this.workerForm.reset();
-    this.ngOnInit();
+    try {
+      const worker = this.workerForm.value;
+      await this.workersService.postWorker(worker);
+      this.workerForm.reset();
+      this.ngOnInit();
+    } catch (err) {
+      console.log(err);
+    }
   }
   async deleteWorker(worker) {
-    await this.workersService.deleteWorkerById(worker.id);
-    this.ngOnInit();
+    try {
+      await this.workersService.deleteWorkerById(worker.id);
+      this.ngOnInit();
+    } catch (err) {
+      console.log(err);
+    }
   }
   async onEditWorker(worker) {
-    await this.workersService.putWorkerById(worker.id, worker);
-    this.ngOnInit();
+    try {
+      await this.workersService.putWorkerById(worker.id, worker);
+      this.ngOnInit();
+    } catch (err) {
+      console.log(err);
+    }
   }
 }
