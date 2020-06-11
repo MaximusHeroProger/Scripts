@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row mt-2 text-center">
+    <div class="col-12 col-sm-4 mt-sm-0 mt-2 mx-auto" *ngIf="idFlag === 1"><button class="btn btn-outline-info w-100" [ngClass]="{active:idFlag === 2 || idFlag === 3}" (click)="idSort(workers, 2)">Сортировать по id</button></div>
+    <div class="col-12 col-sm-4 mt-sm-0 mt-2 mx-auto" *ngIf="idFlag === 2"><button class="btn btn-outline-info w-100" [ngClass]="{active:idFlag === 2 || idFlag === 3}" (click)="idSort(workers, 2)">Сортировать по id ↑</button></div>
+    <div class="col-12 col-sm-4 mt-sm-0 mt-2 mx-auto" *ngIf="idFlag === 3"><button class="btn btn-outline-info w-100" [ngClass]="{active:idFlag === 2 || idFlag === 3}" (click)="idSort(workers, 3)">Сортировать по id ↓</button></div>
+    <div class="col-12 col-sm-4 mt-sm-0 mt-2 mx-auto" *ngIf="ageFlag === 1"><button class="btn btn-outline-info w-100" [ngClass]="{active:ageFlag === 2 || ageFlag === 3}" (click)="ageSort(workers, 2)">Сортировать по возрасту</button></div>
+    <div class="col-12 col-sm-4 mt-sm-0 mt-2 mx-auto" *ngIf="ageFlag === 2"><button class="btn btn-outline-info w-100" [ngClass]="{active:ageFlag === 2 || ageFlag === 3}" (click)="ageSort(workers, 2)">Сортировать по возрасту ↑</button></div>
+    <div class="col-12 col-sm-4 mt-sm-0 mt-2 mx-auto" *ngIf="ageFlag === 3"><button class="btn btn-outline-info w-100" [ngClass]="{active:ageFlag === 2 || ageFlag === 3}" (click)="ageSort(workers, 3)">Сортировать по возрасту ↓</button></div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12 col-sm-8 mx-auto">
+      <label for="searchName">Поиск</label>
+      <input type="text" id="searchName" class="form-control" [(ngModel)]="search">
+    </div>
+  </div>
+  <div class="row mt-2" *ngFor="let worker of workers | search:search">
+    <div class="col-12 col-sm-8 mx-auto">
+      <div class="card">
+        <h5 class="card-header">{{worker.department}}</h5>
+        <div class="card-body">
+          <h5 class="card-title mb-2">{{worker.lastname}} {{worker.name}}</h5>
+          <h6 class="card-subtitle mt-2 mb-2 text-muted">Количество лет: {{worker.DOB}}</h6>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-sm btn-primary mr-2" [routerLink]="['/edit', worker.id]">Редактировать</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteWorker(worker.id)">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

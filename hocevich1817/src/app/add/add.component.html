@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="workerForm" (ngSubmit)="onWorkerFormSubmit()">
+        <input type="hidden" id="id" formControlName="id" [value]="workers.length">
+        <div class="form-group">
+          <label for="lastname">Фамилия</label>
+          <input type="text" formControlName="lastname" id="lastname" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="name">Имя</label>
+          <input type="text" formControlName="name" id="name" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="surname">Отчество</label>
+          <input type="text" formControlName="surname" id="surname" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="number">Номер телефона</label>
+          <input type="text" formControlName="number" id="number" class="form-control" [textMask]="{mask: mask}" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" formControlName="email" id="email" class="form-control" placeholder="Обязательно">
+        </div>
+        <div class="form-group">
+          <label for="DOB">Дата рождения</label>
+          <input type="date" formControlName="DOB" id="DOB" class="form-control" placeholder="Обязательно" max="{{maxDate | date:'yyyy-MM-dd'}}" required>
+        </div>
+        <div class="form-group">
+          <label for="department">Отдел</label>
+          <select formControlName="department" id="department" class="form-control">
+            <option value="IT отдел">IT отдел</option>
+            <option value="Отдел продаж">Отдел продаж</option>
+            <option value="Отдел доставки">Отдел доставки</option>
+            <option value="Юридический отдел">Юридический отдел</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-success form-control" [disabled]="!workerForm.valid" value="Добавить сотрудника">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

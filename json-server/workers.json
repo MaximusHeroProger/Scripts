@@ -1,3 +1,34 @@
 {
-  "workers": []
+  "workers": [
+    {
+      "id": 1,
+      "lastname": "grtgrt",
+      "name": "rtgtrg",
+      "surname": "reger",
+      "number": "+7(345) 353-53-53",
+      "email": "dfgdfgdf@dfssfsd",
+      "DOB": "2020-03-01",
+      "department": "Отдел доставки"
+    },
+    {
+      "id": 2,
+      "lastname": "Хоцевич",
+      "name": "Максим",
+      "surname": "Васильевич",
+      "number": "+7(344) 654-53-53",
+      "email": "dfhfhg@dfgdg",
+      "DOB": "2020-02-29",
+      "department": "Отдел продаж"
+    },
+    {
+      "id": 3,
+      "lastname": "Хоцевич",
+      "name": "Руслан",
+      "surname": "Васиевилс",
+      "number": "+7(564) 645-64-66",
+      "email": "fhfh@dfgdg",
+      "DOB": "2020-02-28",
+      "department": "Юридический отдел"
+    }
+  ]
 }

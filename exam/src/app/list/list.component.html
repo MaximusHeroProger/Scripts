@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mt-3 mb-3">
+    <div class="col-6 text-center"><button class="btn btn-outline-primary" (click)="createSort(notes)" [ngClass]="{active:typeSort}">Сортировать по дате создания</button></div>
+    <div class="col-6 text-center"><button class="btn btn-outline-primary" (click)="completeSort(notes)" [ngClass]="{active:!typeSort}">Сортировать по дате завершения</button></div>
+  </div>
+  <div class="row mt-2" *ngFor="let note of notes">
+    <div class="col-12">
+      <div class="card" [ngClass]="{'border-danger':!note.status, 'border-success':note.status}">
+        <div class="card-body">
+          <h5 class="card-title">{{note.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Создано: {{note.createDate | date: 'dd.MM.yyyy HH:mm'}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted">Завершить: {{note.completeDate | date: 'dd.MM.yyyy HH:mm'}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted" *ngIf="note.editDate">Изменено: {{note.editDate | date: 'dd.MM.yyyy HH:mm'}}</h6>
+          <h6 class="card-subtitle mb-2 text-muted" *ngIf="note.status; else elseBlock">Статус: <span class="text-success">В работе</span></h6>
+          <ng-template #elseBlock>
+            <h6 class="card-subtitle mb-2 text-muted">Статус: <span class="text-danger">Просрочен</span></h6>
+          </ng-template>
+          <p class="card-text">{{note.content}}</p>
+          <button class="btn btn-primary mr-2" [routerLink]="['/edit', note.id]">Редактировать</button>
+          <button class="btn btn-danger" (click)="deleteNoteById(note.id)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
